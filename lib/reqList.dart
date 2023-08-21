@@ -1,16 +1,17 @@
+import 'package:animated_potato/reqSetup.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_potato/ClickUpAPI.dart';
 
 //display a list of ClickUp API calls
 
-class CallListWidget extends StatefulWidget {
-  const CallListWidget({super.key});
+class ReqListWidget extends StatefulWidget {
+  const ReqListWidget({super.key});
 
   @override
-  State<CallListWidget> createState() => _CallListWidgetState();
+  State<ReqListWidget> createState() => _ReqListWidgetState();
 }
 
-class _CallListWidgetState extends State<CallListWidget> {
+class _ReqListWidgetState extends State<ReqListWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +32,18 @@ class _CallListWidgetState extends State<CallListWidget> {
                       shrinkWrap: true,
                       itemCount: clickUpAPI[index]['item'].length,
                       itemBuilder: (BuildContext context, int i) {
-                        return Text(item[i]['name'].toString());
+                        return TextButton(
+                            onPressed: () {
+                              //push to request widget
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => ReqSetupWidget(
+                                          request: item[i]['request'],
+                                          reqName: item[i]['name'].toString(),
+                                        )),
+                              );
+                            },
+                            child: Text(item[i]['name'].toString()));
                       },
                     ),
                   )
