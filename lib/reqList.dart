@@ -22,7 +22,7 @@ class _ReqListWidgetState extends State<ReqListWidget> {
             final category = clickUpAPI[index]['name'];
             final List item = clickUpAPI[index]['item'];
 
-            return Container(
+            return Center(
               child: Column(
                 children: [
                   ListTile(

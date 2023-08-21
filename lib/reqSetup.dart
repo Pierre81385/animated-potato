@@ -32,7 +32,9 @@ class _ReqSetupWidgetState extends State<ReqSetupWidget> {
         child: ListView(
           children: [
             Text(_name),
-            Text(_req.urlInfo.toString()),
+            _req.urlInfo.runtimeType == String
+                ? Text(_req.urlInfo.toString())
+                : Text(_req.urlInfo.raw.toString()),
             TextButton(
                 onPressed: () {
                   //push to request widget
