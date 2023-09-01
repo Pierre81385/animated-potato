@@ -1,3 +1,4 @@
+import 'package:animated_potato/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,6 +11,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    //lets get the size of the device!
+    Size media = MediaQuery.of(context).size;
+    double height = media.height;
+    double width = media.width;
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -31,9 +37,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(
-        title: 'Home',
-      ),
+      home: HomePage(width: width, height: height),
     );
   }
 }
