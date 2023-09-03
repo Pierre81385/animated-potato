@@ -1,3 +1,4 @@
+import 'package:animated_potato/social.dart';
 import 'package:flutter/material.dart';
 
 class NavComponent extends StatefulWidget {
@@ -63,56 +64,61 @@ class _NavComponentState extends State<NavComponent> {
               ),
             ],
           )
-        : Row(
+        : Column(
             children: [
-              TextButton(
-                  onPressed: () {
-                    _onSelect(0);
-                    setState(() {
-                      _activeNav = 0;
-                    });
-                  },
-                  child: Text(
-                    _activeNav == 0
-                        ? "projects".toUpperCase()
-                        : "projects".toLowerCase(),
-                    style: TextStyle(
-                        fontWeight: _activeNav == 0
-                            ? FontWeight.bold
-                            : FontWeight.normal),
-                  )),
-              TextButton(
-                  onPressed: () {
-                    _onSelect(1);
-                    setState(() {
-                      _activeNav = 1;
-                    });
-                  },
-                  child: Text(
-                    _activeNav == 1
-                        ? "about".toUpperCase()
-                        : "about".toLowerCase(),
-                    style: TextStyle(
-                        fontWeight: _activeNav == 1
-                            ? FontWeight.bold
-                            : FontWeight.normal),
-                  )),
-              TextButton(
-                  onPressed: () {
-                    _onSelect(2);
-                    setState(() {
-                      _activeNav = 2;
-                    });
-                  },
-                  child: Text(
-                    _activeNav == 2
-                        ? "experience".toUpperCase()
-                        : "experience".toLowerCase(),
-                    style: TextStyle(
-                        fontWeight: _activeNav == 2
-                            ? FontWeight.bold
-                            : FontWeight.normal),
-                  )),
+              Row(
+                children: [
+                  TextButton(
+                      onPressed: () {
+                        _onSelect(0);
+                        setState(() {
+                          _activeNav = 0;
+                        });
+                      },
+                      child: Text(
+                        _activeNav == 0
+                            ? "projects".toUpperCase()
+                            : "projects".toLowerCase(),
+                        style: TextStyle(
+                            fontWeight: _activeNav == 0
+                                ? FontWeight.bold
+                                : FontWeight.normal),
+                      )),
+                  TextButton(
+                      onPressed: () {
+                        _onSelect(1);
+                        setState(() {
+                          _activeNav = 1;
+                        });
+                      },
+                      child: Text(
+                        _activeNav == 1
+                            ? "about".toUpperCase()
+                            : "about".toLowerCase(),
+                        style: TextStyle(
+                            fontWeight: _activeNav == 1
+                                ? FontWeight.bold
+                                : FontWeight.normal),
+                      )),
+                  TextButton(
+                      onPressed: () {
+                        _onSelect(2);
+                        setState(() {
+                          _activeNav = 2;
+                        });
+                      },
+                      child: Text(
+                        _activeNav == 2
+                            ? "experience".toUpperCase()
+                            : "experience".toLowerCase(),
+                        style: TextStyle(
+                            fontWeight: _activeNav == 2
+                                ? FontWeight.bold
+                                : FontWeight.normal),
+                      )),
+                ],
+              ),
+              SocialComponent(width: width, height: height, device: device)
             ],
           );
   }

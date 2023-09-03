@@ -3,6 +3,7 @@ import 'package:animated_potato/experience.dart';
 import 'package:animated_potato/header.dart';
 import 'package:animated_potato/navigation.dart';
 import 'package:animated_potato/projects.dart';
+import 'package:animated_potato/social.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -59,10 +60,20 @@ class _HomePageState extends State<HomePage> {
             body: SafeArea(
               child: Container(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     //vertical layout
                     HeaderComponent(
                         width: width, height: height, device: device),
+                    SizedBox(
+                      width: width,
+                      child: SocialComponent(
+                          width: width, height: height, device: device),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("PETER JOHN BISHOP"),
+                    ),
                     _pages.elementAt(_selectedIndex)
                     //footer
                   ],
@@ -77,15 +88,27 @@ class _HomePageState extends State<HomePage> {
             ))
         : Scaffold(
             body: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 //horizontal layout
-                HeaderComponent(width: width, height: height, device: device),
-                NavComponent(
-                  device: device,
-                  width: width,
-                  height: height,
-                  onSelect: _onSelect,
+                Row(
+                  children: [
+                    HeaderComponent(
+                        width: width, height: height, device: device),
+                    Column(
+                      children: [
+                        Text("PETER JOHN BISHOP"),
+                        NavComponent(
+                          device: device,
+                          width: width,
+                          height: height,
+                          onSelect: _onSelect,
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
+
                 _pages.elementAt(_selectedIndex)
 
                 //body
