@@ -3,7 +3,6 @@ import 'package:animated_potato/experience.dart';
 import 'package:animated_potato/header.dart';
 import 'package:animated_potato/navigation.dart';
 import 'package:animated_potato/projects.dart';
-import 'package:animated_potato/social.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   late double width;
   late String device = "desktop";
   double mobileBreakWidth = 480;
-
+  bool _hero = true;
   int _selectedIndex = 1;
 
   void _onSelect(int index) {
@@ -56,65 +55,103 @@ class _HomePageState extends State<HomePage> {
     ];
 
     return device == "mobile"
-        ? Scaffold(
-            body: SafeArea(
-              child: Container(
-                child: Column(
+        ? _hero == true
+            ? Scaffold(
+                body: InkWell(
+                    onTap: () {
+                      setState(() {
+                        _hero = !_hero;
+                      });
+                    },
+                    child: HeaderComponent(
+                      width: width,
+                      height: height,
+                      device: device,
+                      hero: _hero,
+                    )),
+              )
+            : Scaffold(
+                backgroundColor: Colors.white,
+                body: SafeArea(
+                  child: Column(
+                    children: [
+                      //vertical layout
+                      HeaderComponent(
+                        width: width,
+                        height: height,
+                        device: device,
+                        hero: _hero,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "PETER JOHN BISHOP",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                      _pages.elementAt(_selectedIndex)
+                      //footer
+                    ],
+                  ),
+                ),
+                bottomNavigationBar: NavComponent(
+                  device: device,
+                  width: width,
+                  height: height,
+                  onSelect: _onSelect,
+                ))
+        : _hero == true
+            ? Scaffold(
+                body: InkWell(
+                    onTap: () {
+                      setState(() {
+                        _hero = !_hero;
+                      });
+                    },
+                    child: HeaderComponent(
+                      width: width,
+                      height: height,
+                      device: device,
+                      hero: _hero,
+                    )),
+              )
+            : Scaffold(
+                backgroundColor: Colors.white,
+                body: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    //vertical layout
-                    HeaderComponent(
-                        width: width, height: height, device: device),
-                    SizedBox(
-                      width: width,
-                      child: SocialComponent(
-                          width: width, height: height, device: device),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text("PETER JOHN BISHOP"),
-                    ),
-                    _pages.elementAt(_selectedIndex)
-                    //footer
-                  ],
-                ),
-              ),
-            ),
-            bottomNavigationBar: NavComponent(
-              device: device,
-              width: width,
-              height: height,
-              onSelect: _onSelect,
-            ))
-        : Scaffold(
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                //horizontal layout
-                Row(
-                  children: [
-                    HeaderComponent(
-                        width: width, height: height, device: device),
-                    Column(
+                    //horizontal layout
+                    Row(
                       children: [
-                        Text("PETER JOHN BISHOP"),
-                        NavComponent(
-                          device: device,
+                        HeaderComponent(
                           width: width,
                           height: height,
-                          onSelect: _onSelect,
+                          device: device,
+                          hero: _hero,
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              "PETER - JOHN - BISHOP",
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            NavComponent(
+                              device: device,
+                              width: width,
+                              height: height,
+                              onSelect: _onSelect,
+                            ),
+                          ],
                         ),
                       ],
                     ),
+
+                    _pages.elementAt(_selectedIndex)
+
+                    //body
+                    //footer
                   ],
                 ),
-
-                _pages.elementAt(_selectedIndex)
-
-                //body
-                //footer
-              ],
-            ),
-          );
+              );
   }
 }

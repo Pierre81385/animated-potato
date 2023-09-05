@@ -47,19 +47,28 @@ class _NavComponentState extends State<NavComponent> {
   Widget build(BuildContext context) {
     return device == "mobile"
         ? BottomNavigationBar(
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.grey,
+            backgroundColor: Colors.white,
             currentIndex: _selectedIndex, //New
             onTap: _onItemTapped,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.account_tree_sharp),
+                icon: Icon(
+                  Icons.account_tree_sharp,
+                ),
                 label: 'Projects',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
+                icon: Icon(
+                  Icons.person,
+                ),
                 label: 'About',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
+                icon: Icon(
+                  Icons.settings,
+                ),
                 label: 'Experience',
               ),
             ],
@@ -80,6 +89,7 @@ class _NavComponentState extends State<NavComponent> {
                             ? "projects".toUpperCase()
                             : "projects".toLowerCase(),
                         style: TextStyle(
+                            color: _activeNav == 0 ? Colors.black : Colors.grey,
                             fontWeight: _activeNav == 0
                                 ? FontWeight.bold
                                 : FontWeight.normal),
@@ -96,6 +106,7 @@ class _NavComponentState extends State<NavComponent> {
                             ? "about".toUpperCase()
                             : "about".toLowerCase(),
                         style: TextStyle(
+                            color: _activeNav == 1 ? Colors.black : Colors.grey,
                             fontWeight: _activeNav == 1
                                 ? FontWeight.bold
                                 : FontWeight.normal),
@@ -112,13 +123,14 @@ class _NavComponentState extends State<NavComponent> {
                             ? "experience".toUpperCase()
                             : "experience".toLowerCase(),
                         style: TextStyle(
+                            color: _activeNav == 2 ? Colors.black : Colors.grey,
                             fontWeight: _activeNav == 2
                                 ? FontWeight.bold
                                 : FontWeight.normal),
                       )),
                 ],
               ),
-              SocialComponent(width: width, height: height, device: device)
+              //SocialComponent(width: width, height: height, device: device)
             ],
           );
   }

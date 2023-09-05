@@ -5,11 +5,13 @@ class HeaderComponent extends StatefulWidget {
       {super.key,
       required this.width,
       required this.height,
-      required this.device});
+      required this.device,
+      required this.hero});
 
   final double width;
   final double height;
   final String device;
+  final bool hero;
 
   @override
   State<HeaderComponent> createState() => _HeaderComponentState();
@@ -19,12 +21,14 @@ class _HeaderComponentState extends State<HeaderComponent> {
   late double height;
   late double width;
   late String device;
+  late bool hero;
 
   @override
   void initState() {
     height = widget.height;
     width = widget.width;
     device = widget.device;
+    hero = widget.hero;
     super.initState();
   }
 
@@ -36,13 +40,13 @@ class _HeaderComponentState extends State<HeaderComponent> {
               shape: const CircleBorder(side: BorderSide.none),
               elevation: 15,
               child: Container(
-                width: 200,
-                height: 200,
+                width: hero ? width : 200,
+                height: hero ? height : 200,
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
+                  shape: hero ? BoxShape.rectangle : BoxShape.circle,
                   image: DecorationImage(
                       image: AssetImage("lib/assets/me.png"),
-                      fit: BoxFit.fitWidth),
+                      fit: hero ? BoxFit.fitHeight : BoxFit.fitWidth),
                 ),
               ),
             ),
@@ -51,15 +55,15 @@ class _HeaderComponentState extends State<HeaderComponent> {
             padding: const EdgeInsets.all(8.0),
             child: Material(
               shape: const CircleBorder(side: BorderSide.none),
-              elevation: 15,
+              elevation: 50,
               child: Container(
-                width: 200,
-                height: 200,
+                width: hero ? width : 200,
+                height: hero ? height : 200,
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
+                  shape: hero ? BoxShape.rectangle : BoxShape.circle,
                   image: DecorationImage(
                       image: AssetImage("lib/assets/me.png"),
-                      fit: BoxFit.fitWidth),
+                      fit: hero ? BoxFit.fitHeight : BoxFit.fitWidth),
                 ),
               ),
             ),
