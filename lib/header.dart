@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HeaderComponent extends StatefulWidget {
   const HeaderComponent(
@@ -48,6 +49,48 @@ class _HeaderComponentState extends State<HeaderComponent> {
                       image: AssetImage("lib/assets/me.png"),
                       fit: hero ? BoxFit.fitHeight : BoxFit.fitWidth),
                 ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 8, 8, 20),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          "Peter Bishop",
+                          textAlign: TextAlign.right,
+                          style: GoogleFonts.shadowsIntoLight(
+                              fontSize: 75, backgroundColor: Colors.white),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        "Full Stack Web Developer".toUpperCase(),
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          backgroundColor: Colors.white,
+                          color: Colors.black,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 8, 8, 50),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          "building reactive applications for mobile and web",
+                          textAlign: TextAlign.right,
+                          style: GoogleFonts.gloriaHallelujah(
+                              fontSize: 20, backgroundColor: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           )
@@ -64,6 +107,48 @@ class _HeaderComponentState extends State<HeaderComponent> {
                   image: DecorationImage(
                       image: AssetImage("lib/assets/me.png"),
                       fit: hero ? BoxFit.fitHeight : BoxFit.fitWidth),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 8, 8, 20),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          "Peter Bishop",
+                          textAlign: TextAlign.right,
+                          style: GoogleFonts.shadowsIntoLight(
+                              fontSize: 100, backgroundColor: Colors.white),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        "Full Stack Web Developer".toUpperCase(),
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          backgroundColor: Colors.white,
+                          color: Colors.black,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: Text(
+                          "building reactive applications for mobile and web",
+                          textAlign: TextAlign.right,
+                          style: GoogleFonts.gloriaHallelujah(
+                              fontSize: 20, backgroundColor: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
